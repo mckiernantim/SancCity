@@ -13,6 +13,7 @@ SancCity.convoy.init = function(stats){
     this.items = stats.items;
     this.truck = stats.truck;
     this.day =stats.day;
+    this.gas = stats.gas
 };
 
 SancCity.convoy.calculate_space = function()
@@ -23,23 +24,13 @@ SancCity.convoy.calculate_space = function()
     let droppedWater=0;
 
     this.capacity = this.people * SancCity.space_per_person + this.truck * SancCity.space_per_truck;
-    this.space_used = this.water * SancCity.space_per_water + this.food * SancCity.space_per_food + this.gear * SancCity.space_per_gear + this.items * SancCity.space_per_items;
-    while(this.capacity  && this.gear <= this.space_used){
-        this.gear--;
-        this.space_used -= SancCity.space_per_gear
-        droppedGear++;
-    }
-    if(droppedGear){
-        this.ui.notify("Dropped" +droppedGear+ 'pieces of gear behind...', 'bad');
-    }
-    while(this.capacity  && this.items <= this.space_used){
-        this.items--;
-        this.space_used -= SancCity.space_per_items
-        droppedItems++;
-    }
-    if(droppedItems){
-        this.ui.notify("Dropped" +droppedItems+ 'pieces of gear behind...', 'bad');
-    }
+    this.space_used = this.water * SancCity.space_per_water + this.food * SancCity.space_per_food + this.gear * SancCity.space_per_gear;
+    while(this.gas > 0 && this.capacity  <= this.space_used){
+        SancCity.easy_pace = 5;
+        };
+        SancCity_easy_pace =10;
+        
+  
 
 };
 // daily travel is the speed player moves - which is the slowest you can move 
@@ -64,6 +55,18 @@ SancCity.convoy.waterConsumed = function(){
     if (this.water < 0){
         this.water = 0;
     }
+}
+SancCity.convoy.gasConsumed = function (){
+    this.gas -= this.truck * (SancCity.gas_per_day * SancCity.easy_pace)
+    if(this.gas < 0){
+        this.gas = 0;
+        SancCity.easy_pace=1
+    }else if(this.gas > 0){
+        SancCity.easy_pace =10
+
+    }
+
+
 }
 
 

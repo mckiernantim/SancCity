@@ -4,20 +4,21 @@ var SancCity =  SancCity || {}
 // stock game items that will be used in other objects
 SancCity.space_per_food = 0.5;
 SancCity.space_per_water =0.5;
-SancCity.space_per_person = 10;
+SancCity.space_per_person = 25;
 SancCity.space_per_gear = 1;
 SancCity.space_per_items= 1;
-SancCity.game_pace = 200;
+SancCity.game_pace = 1200;
 SancCity.day_per_move = .2;
-SancCity.hard_pace = 5;
-SancCity.easy_pace=3;
-SancCity.player_win = 1000;
-SancCity.event_chance=.15;
+SancCity.easy_pace=10;
+SancCity.hard_pace=20;
+SancCity.player_win = 5000;
+SancCity.event_chance=.40;
 SancCity.enemy_cr= 5;
-SancCity.enemy_loot_avg = 15;
-SancCity.space_per_truck= 100;
+SancCity.enemy_loot_avg = 5;
+SancCity.space_per_truck= 1000;
 SancCity.food_per_person = .2
 SancCity.water_per_person = .4
+SancCity.gas_per_day = 1
 
 
 SancCity.session = {};
@@ -32,12 +33,14 @@ SancCity.session.init = function(){
             
             this.convoy.init({
              day:0,
-             money: 100000,
+             money: 1000,
              people: 5,
              items: 10,
-             water: 100,
-             food: 50,
+             water: 500,
+             food: 250,
              truck: 1,
+             gas: 1000,
+             gear: 10
 
 
             });
@@ -87,8 +90,10 @@ SancCity.session.refreshGame = function(){
 
     this.convoy.foodConsumed();
     this.convoy.waterConsumed();
-    this.convoy.updateDistance()
-    this.convoy.calculate_space()
+    this.convoy.gasConsumed();
+    this.convoy.updateDistance();
+    this.convoy.calculate_space();
+   
     this.interface.refreshConvoy()
 
     if(this.convoy.people < 0){
@@ -120,6 +125,9 @@ SancCity.session.refreshGame = function(){
     };
     SancCity.resume = function(){
         this.gameRunning =true;
+    }
+    if (Math.random()<SancCity.event_chance){
+       this.gameMaster.randomEncounter()
     }
 };
     

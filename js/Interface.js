@@ -11,9 +11,9 @@ SancCity.interface.notify = function (message, type){
 //  this will refresh the stats of our convoy
  SancCity.interface.refreshConvoy = function(){
      if (this.convoy.day) { 
-         console.log("Day: " + Math.round(this.convoy.day)+ " Food: " + this.convoy.food  + " Water: " + this.convoy.water)
+         console.log("Day: " + Math.round(this.convoy.day)+ " Food: " + Math.round(this.convoy.food)  + " Water: " + Math.round(this.convoy.water) + " Gas: " + Math.round(this.convoy.gas))
         }
         else{
-    console.log( this.convoy.food  + " Water: " + this.convoy.water)
+    console.log( Math.round(this.convoy.food)  + " Water: " + Math.round(this.convoy.food))
         }
  }
