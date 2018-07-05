@@ -1,0 +1,90 @@
+
+@font-face {
+    font-family: cowboy;
+    src: url(../images/PixelCowboy.otf);
+}
+.hidden_event{
+    position: fixed;
+    
+}
+p{
+    font-size: 1em !important;
+}
+.text_area{
+    background: #d64516;
+    opacity: .9;
+    border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f;
+    font-family: cowboy !important;
+    color: #120f0c;
+    text-shadow: 2px 2px #efc585;
+
+}
+body{
+    background-image: url("../images/pixelDesert.jpg");
+    background-position-y: -15%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    
+}
+.stat_bar{
+    background: #d64516;
+    opacity: .9;
+    border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f
+
+}
+.stat_value{
+   
+    opacity: 1;
+}
+.hidden-store{
+    width: 50%;
+   
+}
+.hidden{
+    display: none !important;
+   
+
+}
+.shop_image{
+    
+    background: #ed9031;
+    background-image: url("../images/7-11lady.jpg");
+    height: 250px;
+    border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f;
+    margin-top: 25px;
+    background-size: cover;
+}
+
+.trump{
+    background-image: url("../images/trump_pixel.gif");
+    border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f;
+    background-size: cover;
+    height:1200px;
+}
+.intro_text{
+     border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f;
+    
+    background: #d64516;
+    opacity: .9;
+}
+.headline{
+height: 350px;
+margin-top:  50px;
+}
+.banner{
+    font-size: 4em;
+}
+.sub-banner{
+    font-size: 2em;
+}

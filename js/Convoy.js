@@ -13,7 +13,11 @@ SancCity.convoy.init = function(stats){
     this.items = stats.items;
     this.truck = stats.truck;
     this.day =stats.day;
-    this.gas = stats.gas
+    this.gas = stats.gas;
+    this.distance = stats.distance;
+    this.capacity = stats.capacity;
+    this.space_used = stats.space_used;
+    
 };
 
 SancCity.convoy.calculate_space = function()
@@ -34,11 +38,10 @@ SancCity.convoy.calculate_space = function()
 
 };
 // daily travel is the speed player moves - which is the slowest you can move 
-// plius the trucks empty space divided by the fastest you can travel and your total space
-SancCity.convoy.updateDistance = function(){
-    var diff = this.capacity - this.space_used;
-    var speed = SancCity.easy_pace + diff/this.capacity * SancCity.hard_pace;
-    this.distance += speed;
+// plus the trucks empty space divided by the fastest you can travel and your total space
+SancCity.convoy.updateDistance= function(){
+    let speed = Math.round((SancCity.convoy.capacity/SancCity.convoy.space_used)*SancCity.easy_pace);
+    this.distance += speed
 }
 
 //food consumed per day
