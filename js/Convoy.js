@@ -27,7 +27,7 @@ SancCity.convoy.calculate_space = function()
     let droppedFood=0;
     let droppedWater=0;
 
-    this.capacity = this.people * SancCity.space_per_person + this.truck * SancCity.space_per_truck;
+    this.capacity = this.people.length * SancCity.space_per_person + this.truck * SancCity.space_per_truck;
     this.space_used = this.water * SancCity.space_per_water + this.food * SancCity.space_per_food + this.gear * SancCity.space_per_gear;
     while(this.gas > 0 && this.capacity  <= this.space_used){
         SancCity.easy_pace = 5;
@@ -47,14 +47,14 @@ SancCity.convoy.updateDistance= function(){
 //food consumed per day
 
 SancCity.convoy.foodConsumed = function(){
-    this.food -= this.people * SancCity.food_per_person;
+    this.food -= this.people.length * SancCity.food_per_person;
     if (this.food < 0){
         this.food = 0;
     }
 }
 // water consumed per day
 SancCity.convoy.waterConsumed = function(){
-    this.water -= this.people * SancCity.water_per_person;
+    this.water -= this.people.length * SancCity.water_per_person;
     if (this.water < 0){
         this.water = 0;
     }

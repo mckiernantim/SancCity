@@ -73,28 +73,28 @@
 
                 <div class="col-md-12">
                     <div class="stat">
-                        <span id="stat_day" class="stat_value">Day:</span>
+                         <span id="stat_day" class="stat_value"></span>
                     </div>
                     <div class="stat">
-                        <span id="stat_distance" class="stat_value">Distance Traveled:</span>
+                            <span id="stat_distance" class="stat_value"></span>
                     </div>
                     <div class="stat">
-                        <span id="stat_money" class="stat_value">Money:</span>
+                            <span id="stat_money" class="stat_value"></span>
                     </div>
                     <div class="stat">
-                        <span id="stat_food" class="stat_value">Food:</span>
+                            <span id="stat_food" class="stat_value"></span>
                     </div>
                     <div class="stat">
-                        <span id="stat_water" class="stat_value">Water:</span>
+                             <span id="stat_water" class="stat_value"></span>
                     </div>
                     <div class="stat">
-                        <span id="stat_gas" class="stat_value">Gas:</span>
+                            <span id="stat_gas" class="stat_value"></span>
                     </div>
                     <div class="stat">
-                        <span id="stat_gear" class="stat_value">Gear:</span>
+                              <span id="stat_gear" class="stat_value"></span>
                     </div>
                     <div class="stat">
-                        <span id="stat_people" class="stat_value">People:</span>
+                     <span id="stat_people" class="stat_value"></span>
                     </div>
                 </div>
 
@@ -157,45 +157,45 @@
                     <div class="col-md-4">
 
                         <div class="item_1">Item:
-                            <span id="item_1"> </span>
+                            <span class="item_1"> </span>
                         </div>
-                        <div class="item_1_price">Price:
-                            <span id="item_1_price"></span>
+                        <div>Price:
+                            <span class="item_1_price"></span>
                         </div>
-                        <div class="item_1_quantity">In Stock:
-                            <span id="item_1_quantity"></span>
+                        <div>In Stock:
+                            <span class="item_1_quantity"></span>
                         </div>
-                        <input type="number" size="25" name="whatever" id="item_1_input" required="">
+                        <input type="number" size="25" name="whatever" class="item_1_input" required="">
 
-                        <button class="buy_item_1 btn btn-success" id="buy1">Buy</button>
+                        <button class="buy_item_1 btn btn-success buy1">Buy</button>
                     </div>
                     <div class="col-md-4">
-                        <div class="item_2"> Item:
-                            <span id="item_2"></span>
+                        <div> Item:
+                            <span class="item_2"></span>
                         </div>
-                        <div class="item_2_price">Price:
-                            <span id="item_2_price"></span>
+                        <div>Price:
+                            <span class="item_2_price"></span>
                         </div>
-                        <div class="item_2_quantity">In Stock:
-                            <span id="item_2_quantity"> </span>
+                        <div >In Stock:
+                            <span class="item_2_quantity"> </span>
                         </div>
-                        <input type="number" size="25" name="whatever" id="item_2_input" required="">
+                        <input type="number" size="25" name="whatever" class="item_2_input" required="">
 
-                        <button class="buy_item_2 btn btn-success" id="buy2">Buy</button>
+                        <button class="buy_item_2 btn btn-success buy2">Buy</button>
                     </div>
                     <div class="col-md-4">
                         <div class="item_3">Item:
-                            <span id="item_3"> </span>
+                            <span class="item_3"> </span>
                         </div>
-                        <div class="item_3_price">Price:
-                            <span id="item_3_price"></span>
+                        <div >Price:
+                            <span class="item_3_price"></span>
                         </div>
-                        <div class="item_3_quantity">In Stock:
-                            <span id="item_3_quantity"></span>
+                        <div>In Stock:
+                            <span class="item_3_quantity"></span>
                         </div>
-                        <input type="number" size="25" name="whatever" id="item_3_input" required="">
+                        <input type="number" size="25" name="whatever" class="item_3_input" required="">
 
-                        <button class="buy_item btn btn-success" id="buy3">Buy</button>
+                        <button class="buy_item btn btn-success buy3">Buy</button>
                     </div>
                 </div>
             </div>
@@ -209,7 +209,22 @@
             </div>
         </div>
     </div>
-    <div class="container hidden-store text_area" id="andrea-store">
+    <div class="container text-center hidden city_container text_area" id = "cityDiv">
+            <div class="row text-center img_row">
+                <div class="col-md-12">
+                    <h2 class="city_banner" id ="city_headline">HEY YOU MADE IT TO A NEW CITY</h2>
+                    <h4>You may enter the city or continue down the Trail</h4>
+                </div>
+            </div>
+            <div class="row text-center ">
+               
+                <div class="col-md-12 text_area city_text">
+                    <button class="continue btn-success">Enter City</button>
+                    <button class="move_on btn-success">Continue On Trail</button>
+                </div>
+            </div>
+        </div>
+    <div class="container hidden-store text_area hidden" id="andrea-store">
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
@@ -222,93 +237,49 @@
                 <div class="row">
                     <div class="col-md-4">
 
-                        <div class="item_1">Item:
-                            <span id="item_1"> </span>
+                        <div >Item:
+                            <span class="item_1"> </span>
                         </div>
-                        <div class="item_1_price">Price:
-                            <span id="item_1_price"></span>
+                        <div >Price:
+                            <span class="item_1_price"></span>
                         </div>
-                        <div class="item_1_quantity">In Stock:
-                            <span id="item_1_quantity"></span>
+                        <div >In Stock:
+                            <span class="item_1_quantity"></span>
                         </div>
-                        <input type="number" size="25" name="whatever" id="item_1_input" required="">
+                        <input type="number" size="25" name="whatever" class="item_1_input" required="">
 
-                        <button class="buy_item_1 btn btn-success" id="buy1">Buy</button>
+                        <button class="buy_item_1 btn btn-success buy1">Buy</button>
                     </div>
                     <div class="col-md-4">
-                        <div class="item_2"> Item:
-                            <span id="item_2"></span>
+                        <div> Item:
+                            <span class="item_2"></span>
                         </div>
-                        <div class="item_2_price">Price:
-                            <span id="item_2_price"></span>
+                        <div>Price:
+                            <span class="item_2_price"></span>
                         </div>
-                        <div class="item_2_quantity">In Stock:
-                            <span id="item_2_quantity"> </span>
+                        <div>In Stock:
+                            <span class="item_2_quantity"> </span>
                         </div>
-                        <input type="number" size="25" name="whatever" id="item_2_input" required="">
+                        <input type="number" size="25" name="whatever" class="item_2_input" required="">
 
-                        <button class="buy_item_2 btn btn-success" id="buy2">Buy</button>
+                        <button class="buy_item_2 btn btn-success buy2">Buy</button>
                     </div>
                     <div class="col-md-4">
-                        <div class="item_3">Item:
-                            <span id="item_3"> </span>
+                        <div>Item:
+                            <span class="item_3"> </span>
                         </div>
-                        <div class="item_3_price">Price:
-                            <span id="item_3_price"></span>
+                        <div>Price:
+                            <span class="item_3_price"></span>
                         </div>
-                        <div class="item_3_quantity">In Stock:
-                            <span id="item_3_quantity"></span>
+                        <div>In Stock:
+                            <span class="item_3_quantity"></span>
                         </div>
-                        <input type="number" size="25" name="whatever" id="item_3_input" required="">
+                        <input type="number" size="25" name="whatever" class="item_3_input" required="">
 
-                        <button class="buy_item btn btn-success" id="buy3">Buy</button>
+                        <button class="buy_item btn btn-success buy3">Buy</button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-
-                        <div class="item_1">Item:
-                            <span id="item_1"> </span>
-                        </div>
-                        <div class="item_1_price">Price:
-                            <span id="item_1_price"></span>
-                        </div>
-                        <div class="item_1_quantity">In Stock:
-                            <span id="item_1_quantity"></span>
-                        </div>
-                        <input type="number" size="25" name="whatever" id="item_1_input" required="">
-
-                        <button class="buy_item_1 btn btn-success" id="buy1">Buy</button>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item_2"> Item:
-                            <span id="item_2"></span>
-                        </div>
-                        <div class="item_2_price">Price:
-                            <span id="item_2_price"></span>
-                        </div>
-                        <div class="item_2_quantity">In Stock:
-                            <span id="item_2_quantity"> </span>
-                        </div>
-                        <input type="number" size="25" name="whatever" id="item_2_input" required="">
-
-                        <button class="buy_item_2 btn btn-success" id="buy2">Buy</button>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item_3">Item:
-                            <span id="item_3"> </span>
-                        </div>
-                        <div class="item_3_price">Price:
-                            <span id="item_3_price"></span>
-                        </div>
-                        <div class="item_3_quantity">In Stock:
-                            <span id="item_3_quantity"></span>
-                        </div>
-                        <input type="number" size="25" name="whatever" id="item_3_input" required="">
-
-                        <button class="buy_item btn btn-success" id="buy3">Buy</button>
-                    </div>
-                </div>
+               
             </div>
            
             <div class="col-md-3 shop_image offset-md-1">
@@ -319,7 +290,7 @@
             <div class="col-md-12 text-center">
                 <p> "Sup, I'm Andrea and this is my store. You got a long road ahead with dangerous border patrols, ravenous
                     trumpers, porbably nazis and you may possibly die of dysentery. Lucky for you I got the best gear at
-                    the best prices in town. You'll need water, gas, and food to survive. And oneday if Tim gets gear working
+                    the best prices in town. You'll need water, gas, and food to survive and alot more than youb currentl have. And oned ay if Tim gets gear working
                     you can buy items to fight nazis! Once you're done click checkout and your journey begins!" </p>
                     <button class="buy_item btn btn-success" id="start_game">LET'S ROLL</button>
 

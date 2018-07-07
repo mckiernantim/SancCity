@@ -9,7 +9,7 @@ SancCity.space_per_gear = 1;
 SancCity.space_per_items = 1;
 SancCity.game_pace = 1200;
 SancCity.day_per_move = .2;
-SancCity.easy_pace = 8;
+SancCity.easy_pace = 4;
 SancCity.hard_pace = 20;
 SancCity.player_win = 5000;
 SancCity.event_chance = .12;
@@ -19,6 +19,8 @@ SancCity.space_per_truck = 1000;
 SancCity.food_per_person = .2;
 SancCity.water_per_person = .4;
 SancCity.gas_per_day = 1;
+SancCity.dead_people = [];
+
 // preset values for our random shops
 SancCity.andreasShop = [
     
@@ -33,7 +35,7 @@ SancCity.andreasShop = [
         quantity:500
     },
      gas = {
-        name: 500,
+        name: 'gas',
         price:2,
         quantity: 300
     },
@@ -85,27 +87,16 @@ SancCity.shops = [
             quantity: 200
         }
 
-    ]
+    ],
 
 ]
-    // page turning functions
-document.getElementById('page_1_continue').addEventListener('click', function(){
-    document.getElementById('page_1').classList.add("hidden");
-    document.getElementById('page_2').classList.remove("hidden")
-});
-document.getElementById('page_2_continue').addEventListener('click', function(){
-    document.getElementById('page_2').classList.add("hidden");
-    document.getElementById('main_game').classList.remove("hidden")
-    SancCity.interface.populateShop(SancCity.andreasShop)
-});
-document.getElementById('start_game').addEventListener('click', function(){
-    document.getElementById('page_2').classList.add("hidden");
-    document.getElementById('main_game').classList.remove("hidden")
-    SancCity.session.startGame();
-});
-
-
-
+SancCity.checkpoints= [
+    {
+        name:"Tucson",
+        distance: 1000,
+        image_path: "images/tucson-sepia.jpeg",
+    },
+];
 SancCity.session = {};
 
 SancCity.session.init = function () {
@@ -117,14 +108,14 @@ SancCity.session.init = function () {
     this.convoy = SancCity.convoy;
 
     this.convoy.init({
-        day: 0,
-        money: 1000,
-        people: 5,
+        day: 1,
+        money: 1800,
+        people: [],
         items: 0,
-        water: 0,
-        food: 0,
+        water: 100,
+        food: 100,
         truck: 1,
-        gas: 0,
+        gas: 300,
         gear: 0,
         distance: 0,
 
@@ -145,6 +136,10 @@ SancCity.session.init = function () {
 
     
 }
+ 
+
+
+
 
 SancCity.session.startGame = function () {
 
@@ -208,7 +203,14 @@ SancCity.session.refreshGame = function () {
         this.gameRunning = false;
         return;
     }
+    // check to see if we made it to a city
+    if (this.convoy.distance > SancCity.checkpoints[0].distance){
+        this.showCity(SancCity.checkpoints[0])
+        this.checkpoints.shift()
+        SancCity.session.pause()
 
+    }
+    // random event
     if (Math.random() < SancCity.event_chance) {
         this.gameMaster.randomEncounter()
     }
@@ -220,12 +222,48 @@ SancCity.session.resume = function () {
     this.gameRunning = true;
     this.step();
 }
-
+// resume the game after pause or event
 $(document).ready(function () {
     $("#resume_button").click(function () {
         SancCity.session.resume()
     })
 });
+// display city div and remove the current city from the cities array
+SancCity.session.showCity = function (city){
+    cityDiv = document.getElementById("cityDiv");
+    cityDiv.classList.remove('hidden');
+    cityDiv.style.backgroundImage ="url("+city.image_path+")";
+    document.getElementById("city_headline").innerText= "Welcome to " +SancCity.checkpoints[0].name 
+    
+
+}
 
 
-SancCity.session.init();
+
+   // page turning functions for the start of the gamne.
+    document.getElementById('page_1_continue').addEventListener('click', function(){
+    document.getElementById('page_1').classList.add("hidden");
+    document.getElementById('page_2').classList.remove("hidden")
+});
+    document.getElementById('page_2_continue').addEventListener('click', function(){
+    document.getElementById('page_2').classList.add("hidden");
+    document.getElementById('main_game').classList.remove("hidden");
+    document.getElementById('andrea-store').classList.remove("hidden");
+    
+    SancCity.session.init()
+    SancCity.interface.populateNames()
+    document.getElementById("stat_money").innerText= 1800;
+    document.getElementById("stat_food").innerText= 100;
+    document.getElementById("stat_water").innerText= 100
+    document.getElementById("stat_people").innerText = 5;
+    SancCity.interface.populateShop(SancCity.andreasShop);
+    SancCity.interface.refreshConvoy();
+    SancCity.interface.notify('Better stock up on goods...')
+});
+    document.getElementById('start_game').addEventListener('click', function(){
+    document.getElementById('page_2').classList.add("hidden");
+    document.getElementById('andrea-store').classList.add('hidden')
+    SancCity.session.startGame();
+});
+
+

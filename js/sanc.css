@@ -17,8 +17,8 @@ p{
     border-width: 20px;
     border-color: #eb892f;
     font-family: cowboy !important;
-    color: #120f0c;
-    text-shadow: 2px 2px #efc585;
+    color: #dad9dc;
+    text-shadow: 3px 3px black;
 
 }
 body{
@@ -87,4 +87,18 @@ margin-top:  50px;
 }
 .sub-banner{
     font-size: 2em;
+}
+.city_image{
+    height: 100%;
+}
+.city_container{
+    height:750px;
+    background-size: cover;
+    position: relative;
+    bottom: 380px;
+    opacity: 1;
+}
+
+.img_row{
+    height:85%;
 }

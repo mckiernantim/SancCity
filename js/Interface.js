@@ -11,8 +11,8 @@ SancCity.interface.notify = function (message, type){
     document.getElementById('feed').innerHTML = '<div id="update-' + SancCity.interface.status_count + '">Day '+ Math.ceil(this.convoy.day) + ': ' + message+'</div>' + document.getElementById('feed').innerHTML;
     SancCity.interface.status_count++;
     let i = SancCity.interface.status_count;
-    if (i >= 10 ){
-        document.getElementById("update-"+(i-10)).remove()
+    if (i >= 7 ){
+        document.getElementById("update-"+(i-7)).remove()
     }
 };
 
@@ -62,88 +62,165 @@ SancCity.interface.notify = function (message, type){
     
      document.getElementById("buy1").addEventListener('click', function purchaseItemOne(){
          
+        SancCity.interface.purchaseItem(1)
+        SancCity.interface.refreshConvoy()
+        //  let item = document.getElementById("item_1").innerText;
         
-         let item = document.getElementById("item_1").innerText;
-        
-         let price = parseInt(document.getElementById("item_1_price").innerText, 10)
+        //  let price = parseInt(document.getElementById("item_1_price").innerText, 10)
        
-         let num = parseInt(document.getElementById("item_1_input").value)
+        //  let num = parseInt(document.getElementById("item_1_input").value)
        
-         let total =  price * num;
-         if(total > SancCity.convoy.money){
-             SancCity.interface.notify("Sorry you don't have that kind of money")
-         }
-         else{
+        //  let total =  price * num;
+        //  if(total > SancCity.convoy.money){
+        //      SancCity.interface.notify("Sorry you don't have that kind of money")
+        //  }
+        //  else{
             
-            SancCity.convoy.money -= total
-            SancCity.convoy[item] += num
-            document.getElementById('item_1_quantity').innerText -= num
-            console.log[item]
-            console.log(SancCity.convoy[item])
-            SancCity.interface.refreshConvoy();
-            }
-        })
+        //     SancCity.convoy.money -= total
+        //     SancCity.convoy[item] += num
+        //     document.getElementById('item_1_quantity').innerText -= num
+        //     console.log[item]
+        //     console.log(SancCity.convoy[item])
+        //     SancCity.interface.refreshConvoy();
+        //     }
+        });
     document.getElementById("buy2").addEventListener('click', function purchaseItemTwo(){
-         
+        SancCity.interface.purchaseItem(2)
+        SancCity.interface.refreshConvoy()
            
-            let item = document.getElementById("item2").innerText;
+            // let item = document.getElementById("item2").innerText;
            
-            let price = parseInt(document.getElementById("item2_price").innerText, 10)
+            // let price = parseInt(document.getElementById("item2_price").innerText, 10)
           
-            let num = parseInt(document.getElementById("item2_input").value)
+            // let num = parseInt(document.getElementById("item2_input").value)
           
-            let total =  price * num;
-            if(total > SancCity.convoy.money){
-                SancCity.interface.notify("Sorry you don't have that kind of money")
-            }
-            else{
+            // let total =  price * num;
+            // if(total > SancCity.convoy.money){
+            //     SancCity.interface.notify("Sorry you don't have that kind of money")
+            // }
+            // else{
                
-               SancCity.convoy.money -= total
-               SancCity.convoy[item] += num
-               document.getElementById('item2_quantity').innerText -= num
+            //    SancCity.convoy.money -= total
+            //    SancCity.convoy[item] += num
+            //    document.getElementById('item2_quantity').innerText -= num
                
-               SancCity.interface.refreshConvoy();
-               }
-           })
+            //    SancCity.interface.refreshConvoy();
+            //    }
+           });
     document.getElementById("buy3").addEventListener('click', function purchaseItemTwo(){
+        SancCity.interface.purchaseItem(3)
+        SancCity.interface.refreshConvoy()
          
            
-            let item = document.getElementById("item_3").innerText;
+        //     let item = document.getElementById("item_3").innerText;
            
-            let price = parseInt(document.getElementById("item_3_price").innerText, 10)
+        //     let price = parseInt(document.getElementById("item_3_price").innerText, 10)
           
-            let num = parseInt(document.getElementById("item_3_input").value)
+        //     let num = parseInt(document.getElementById("item_3_input").value)
           
-            let total =  price * num;
-            if(total > SancCity.convoy.money){
-                SancCity.interface.notify("Sorry you don't have that kind of money")
-            }
-            else{
+        //     let total =  price * num;
+        //     if(total > SancCity.convoy.money){
+        //         SancCity.interface.notify("Sorry you don't have that kind of money")
+        //     }
+        //     else{
                
-               SancCity.convoy.money -= total
-               SancCity.convoy[item] += num
-               document.getElementById('item_3_quantity').innerText -= num
+        //        SancCity.convoy.money -= total
+        //        SancCity.convoy[item] += num
+        //        document.getElementById('item_3_quantity').innerText -= num
                
-               SancCity.interface.refreshConvoy();
-               }
-           })
-        }
+        //        SancCity.interface.refreshConvoy();
+        //        }
+        //    })
+        });
+    }
 
-        SancCity.interface.andreaShop = function(){
-            let thisShop = SancCity.andreasShop;
-            populateShop(thisShop);
-            
-
-
-        }
 
     SancCity.interface.populateShop = function(shop_object){
-        for(let i=1; i<=shop_object.length;i++){
-            console.log('item_'+i.toString())
-            document.getElementById('item_'+i.toString()).innerText =shop_object[i]; 
-            console.log(shop_object[i])
-            document.getElementById('item_'+i.toString()+'_price').innerText = shop_object[i].price;
-            document.getElementById('item_'+i.toString()+'_quantity').innerText = shop_object[i].quantity;
+        for(let i=1; i<= shop_object.length;i++){
+           
+            let itemNames = document.getElementsByClassName('item_'+i.toString())
+            console.log(itemNames)
+            let itemPrices = document.getElementsByClassName('item_'+i.toString()+"_price")
+            console.log(itemPrices)
+            let itemQuantity = document.getElementsByClassName('item_'+i.toString()+"_quantity")
+            console.log(itemQuantity)
+            for (let j = 0; j<itemNames.length; j++) {
+                itemNames[j].innerText = shop_object[i-1]['name']; 
+                console.log(itemNames[j].innerText);
+            }
+            for (let k = 0; k<itemPrices.length; k++) {
+                itemPrices[k].innerText = shop_object[i-1].price; 
+            }
+            for (let l = 0; l<itemQuantity.length; l++) {
+                itemQuantity[l].innerText =shop_object[i-1].quantity; 
+            }
         }
-         
+        // set up buttons to purchase items and update the caravan and store
+       let button1=  document.getElementsByClassName("buy1");
+            for (i=0; i<button1.length;i++){
+                button1[i].addEventListener('click', function purchaseItemOne(){
+                    SancCity.interface.purchaseItem(1);
+                });
+        };
+        let button2 = document.getElementsByClassName("buy2");
+        for (i=0; i<button2.length;i++){
+            button2[i].addEventListener('click', function purchaseItemTwo(){
+                SancCity.interface.purchaseItem(2);
+            });
+        };
+            
+            let button3 = document.getElementsByClassName("buy3");
+        for (i=0; i<button3.length;i++){
+            button3[i].addEventListener('click', function purchaseItemThree(){
+                SancCity.interface.purchaseItem(3);
+            });
+    
+        };  
+    }  
+    
+    
+    
+    SancCity.interface.purchaseItem = function(num){
+        
+        let item = document.getElementsByClassName("item_"+num)[0].innerText;
+        console.log(document.getElementsByClassName("item_"+num)[0])
+        let price = parseInt(document.getElementsByClassName("item_"+num+"_price")[1].innerText, 10);
+        console.log(document.getElementsByClassName("item_"+num+"_price"))
+        let purchase = (document.getElementsByClassName("item_"+num+"_input"));
+        console.log(purchase.length)
+        let quantity;
+        let this_purchase=0;
+            for (i=0;i<purchase.length;i++){
+                console.log(purchase[i] + "THIS IS THE LOOP")
+                if (purchase[i].value>0)
+                    { quantity= i;
+                      this_purchase = parseInt(purchase[i].value);}
+            }
+        console.log(purchase)
+          console.log(quantity)
+            let total =  price * this_purchase;
+            if(total > SancCity.convoy.money){
+                SancCity.interface.notify("Hey BUDDY, you ain't got that kinda cash!")
+            }
+            else{
+               
+               SancCity.convoy.money -= total;
+               SancCity.convoy[item] += this_purchase;
+               console.log(quantity)
+               document.getElementsByClassName('item_'+quantity+"_quantity")[0].innerText -= this_purchase;
+               console.log(document.getElementsByClassName('item_'+quantity+"_quantity")[0])
+               console.log(item)
+                console.log(SancCity.convoy[item])
+               SancCity.interface.refreshConvoy();
+            }      
+    };
+
+    SancCity.interface.populateNames = function(){
+        for (i=1; i<6; i++){
+          SancCity.convoy.people.push(" "+ document.getElementById("player_name_"+i).value)
+          console.log(document.getElementById("player_name_"+i).value)
+        }
+
     }
+    
+

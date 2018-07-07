@@ -45,11 +45,11 @@ SancCity.gameMaster.types = [
         text: "Theives make off with equipment during the night.  Gear: "
     },
     {
-        type: 'CHANGE-STATS',
+        type: 'CHANGE-STATS-PEOPLE-BAD',
         style: 'negative',
         stat: 'people',
         value: -1,
-        text: "A violent mob of red-hatted Americans come across your camp. You split up and flee to the desert.  When you regroup you notice someone is missing.  People: "
+        text: "A violent mob of red-hatted Americans come across your camp. You split up and flee to the desert.  When you regroup you notice someone is missing."
     },
     {
         type: 'CHANGE-STATS',
@@ -222,17 +222,31 @@ SancCity.gameMaster.randomEncounter = function(){
     let encounterData = this.types[encounterIndex];
     console.log(encounterData)
 
-    if(encounterData.type === "CHANGE-STATS"){
-        SancCity.gameMaster.statChange(encounterData);
+    if(encounterData.type === "CHANGE-STATS" && encounterData.stat === "people"){
+       SancCity.convoy.people.push(" Rando person")
         $(document).ready(function(){
             $("#myModal").modal()
            });
       
-           document.getElementById('modal_text').innerText = encounterData.text + " " +encounterData.stat + ": " +encounterData.value;
+           document.getElementById('modal_text').innerText = encounterData.text + " " +encounterData.stat + ": rando person joined";
            SancCity.session.pause();
+         
            SancCity.interface.refreshConvoy();
           
         }else 
+        if(encounterData.type === "CHANGE-STATS"){
+            SancCity.gameMaster.statChange(encounterData)
+             $(document).ready(function(){
+                 $("#myModal").modal()
+                });
+           
+                document.getElementById('modal_text').innerText = encounterData.text + " " +encounterData.stat + " " + encounterData.value;
+                SancCity.session.pause();
+             
+                SancCity.interface.refreshConvoy();
+               
+             }else 
+        
     if(encounterData.type === "ENCOUNTER"){
         $(document).ready(function(){
             $("#myModal").modal()
@@ -245,6 +259,18 @@ SancCity.gameMaster.randomEncounter = function(){
         this.interface.showShop();
         SancCity.session.pause();
         SancCity.interface.refreshConvoy();
+    }else
+    if(encounterData.type === "CHANGE-STATS-PEOPLE-BAD"){
+        thisPoorBastard = "";
+        SancCity.gameMaster.personDead();
+        $(document).ready(function(){
+            $("#myModal").modal()
+           });
+      
+           document.getElementById('modal_text').innerText = encounterData.text + " " + thisPoorBastard + " is GONE!" ;
+           SancCity.session.pause();
+           SancCity.interface.refreshConvoy();
+          
     }
 }
  // Here we add whatever the stat is from randomEncounter to our total
@@ -253,4 +279,12 @@ SancCity.gameMaster.statChange = function(encounterData){
         this.convoy[encounterData.stat] += encounterData.value;
         this.interface.notify(encounterData.text + " " + ( encounterData.value) + " " + encounterData.style );
         }
+    }
+
+    SancCity.gameMaster.personDead = function(){
+        num = Math.round(Math.random(SancCity.convoy.people.length));
+        console.log(num)
+        thisPoorBastard = SancCity.convoy.people[num];
+        SancCity.dead_people.push(thisPoorBastard);
+        SancCity.convoy.people.splice(num,1)
     }
