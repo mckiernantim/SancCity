@@ -3,8 +3,6 @@ var SancCity = {} || SancCity
 SancCity.gameMaster= {};
 
 
-SancCity.gameMaster = {};
-
 
 SancCity.gameMaster.types = [
     {
@@ -47,11 +45,11 @@ SancCity.gameMaster.types = [
         text: "Theives make off with equipment during the night.  Gear: "
     },
     {
-        type: 'CHANGE-STATS',
+        type: 'CHANGE-STATS-PEOPLE-BAD',
         style: 'negative',
         stat: 'people',
         value: -1,
-        text: "A violent mob of red-hatted Americans come across your camp. You split up and flee to the desert.  When you regroup you notice someone is missing.  People: "
+        text: "A violent mob of red-hatted Americans come across your camp. You split up and flee to the desert.  When you regroup you notice someone is missing."
     },
     {
         type: 'CHANGE-STATS',
@@ -157,24 +155,136 @@ SancCity.gameMaster.types = [
         stat: 'food',
         value: 10,
         text: "A group of millenials approach.  After lamenting the state of their country, they take selfies with your family and leave a small donation. Money gained: " 
-    }
+    },
+    {
+        type: 'ENCOUNTER',
+        style: 'neutral',
+        text: "The sound of engines cut through the desert night at your camp.  Trucks are coming closer.  What do you do?",
+        options:  {
+            option_one: { 
+                choice: "Flee",
+                outcome: "You're beset by the American Border patrol and scramble for safety but they manage to get some of your party",
+                stat: 'people',
+                value: -2, 
+            },
+            option_two: {
+                choice: "Do nothing",
+                outcome: "A squad of American Border Patrol agents rip past you quiet camp.  They fail to notice you but not everyone will be so lucky."
+        },
+            option_three:{
+                choice: "Flag them down",
+                outcome: 'The trucks you flag down are none other than United States Border Patrol.  The Sergent in charge demands a bribe',
+                stat: 'money',
+                value: "-300",
+            }
+        }
+    },
+    // {
+    //         type: 'SHOP',
+    //         style: 'neutral',
+    //         name: 'Roadside Gas Station',
+    //         text: "A small gas station stands by the road.  The proprieter offers supplies.",
+    // },
+    // {
+    //         type: 'SHOP',
+    //         style: 'neutral',
+    //         name: 'Smugglers ',
+    //         text: "A group of smugglers flag you down offering exotic goods.",
+    // },
+    // {
+    //         type: 'SHOP',
+    //         style: 'neutral',
+    //         name: 'Traveling Convoy',
+    //         text: "A fellow traveler of the trail waves you down.  He offers to sell some extra supplies",
+    // },
+    // {
+    //         type: 'SHOP',
+    //         style: 'neutral',
+    //         name: 'Truck Stop',
+    //         text: "A sleepy truck stop.  The man behind the counter eyes you suspiciously.",
+    // },
+
+    
+        
+
+                
+
+    ]
+        
     
 
-]
 
+    // randomeEncounter brings back a random number and combs through our array
 SancCity.gameMaster.randomEncounter = function(){
 
-    let gameEncounterIndex = Math.floor(Math.random() * this.types.length);
-    let gameEncounterData = this.types[gameEncounterIndex];
+    let encounterIndex = Math.floor(Math.random() * this.types.length);
+    console.log(encounterIndex)
+    let encounterData = this.types[encounterIndex];
+    console.log(encounterData)
 
-    if(gameEncounterData.type= "CHANGE_STATS"){
-        this.changeStat(gameEncounterData);
+    if(encounterData.type === "CHANGE-STATS" && encounterData.stat === "people"){
+       SancCity.convoy.people.push(" Rando person")
+        $(document).ready(function(){
+            $("#myModal").modal()
+           });
+      
+           document.getElementById('modal_text').innerText = encounterData.text + " " +encounterData.stat + ": rando person joined";
+           SancCity.session.pause();
+         
+           SancCity.interface.refreshConvoy();
+          
+        }else 
+        if(encounterData.type === "CHANGE-STATS"){
+            SancCity.gameMaster.statChange(encounterData)
+             $(document).ready(function(){
+                 $("#myModal").modal()
+                });
+           
+                document.getElementById('modal_text').innerText = encounterData.text + " " +encounterData.stat + " " + encounterData.value;
+                SancCity.session.pause();
+             
+                SancCity.interface.refreshConvoy();
+               
+             }else 
+        
+    if(encounterData.type === "ENCOUNTER"){
+        $(document).ready(function(){
+            $("#myModal").modal()
+           })
+           SancCity.session.pause();
+           SancCity.interface.refreshConvoy();
+    }else
+    if(encounterData.type === "SHOP"){
+        document.getElementById('shop_name').innerText = encounterData.name
+        this.interface.showShop();
+        SancCity.session.pause();
+        SancCity.interface.refreshConvoy();
+    }else
+    if(encounterData.type === "CHANGE-STATS-PEOPLE-BAD"){
+        thisPoorBastard = "";
+        SancCity.gameMaster.personDead();
+        $(document).ready(function(){
+            $("#myModal").modal()
+           });
+      
+           document.getElementById('modal_text').innerText = encounterData.text + " " + thisPoorBastard + " is GONE!" ;
+           SancCity.session.pause();
+           SancCity.interface.refreshConvoy();
+          
     }
-};
+}
+ // Here we add whatever the stat is from randomEncounter to our total
+SancCity.gameMaster.statChange = function(encounterData){
+    if(encounterData.value + this.convoy[encounterData.stat]>=0){
+        this.convoy[encounterData.stat] += encounterData.value;
+        this.interface.notify(encounterData.text + " " + ( encounterData.value) + " " + encounterData.style );
+        }
+    }
 
-SancCity.gameMaster.changeStat= function(gameEncounterData){
-    if(gameEncounterData.value + this.convoy[gameEncounterData.stat]>=0){
-        this.convoy[gameEncounterData.stat] += gameEncounterData.value;
-        this.interface.notify(gameEncounterData.text + " " + ( gameEncounterData.value) + " " + gameEncounterData.style );
+    SancCity.gameMaster.personDead = function(){
+        num = Math.round(Math.random(SancCity.convoy.people.length));
+        console.log(num)
+        thisPoorBastard = SancCity.convoy.people[num];
+        SancCity.dead_people.push(thisPoorBastard);
+        SancCity.convoy.people.splice(num,1)
     }
-};
