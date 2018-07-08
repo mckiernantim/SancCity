@@ -102,3 +102,25 @@ margin-top:  50px;
 .img_row{
     height:85%;
 }
+.enemy_image{
+    background: #ed9031;
+    background-image: url("../images/7-11lady.jpg");
+    height: 250px;
+    border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f;
+  
+    background-size: cover;
+    
+    
+}
+.player_weapon{
+    background: #ed9031;         
+    background-image: url("../images/7-11lady.jpg");
+    height: 250px;
+    border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f;
+  
+    background-size: cover;}
+    

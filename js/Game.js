@@ -11,8 +11,8 @@ SancCity.game_pace = 1200;
 SancCity.day_per_move = .2;
 SancCity.easy_pace = 4;
 SancCity.hard_pace = 20;
-SancCity.player_win = 5000;
-SancCity.event_chance = .12;
+SancCity.player_win = 50000;
+SancCity.event_chance = .82;
 SancCity.enemy_cr = 5;
 SancCity.enemy_loot_avg = 5;
 SancCity.space_per_truck = 1000;
@@ -20,6 +20,8 @@ SancCity.food_per_person = .2;
 SancCity.water_per_person = .4;
 SancCity.gas_per_day = 1;
 SancCity.dead_people = [];
+SancCity.cr = 1;
+player = {};
 
 // preset values for our random shops
 SancCity.andreasShop = [
@@ -93,7 +95,7 @@ SancCity.shops = [
 SancCity.checkpoints= [
     {
         name:"Tucson",
-        distance: 1000,
+        distance: 10000,
         image_path: "images/tucson-sepia.jpeg",
     },
 ];
@@ -206,7 +208,7 @@ SancCity.session.refreshGame = function () {
     // check to see if we made it to a city
     if (this.convoy.distance > SancCity.checkpoints[0].distance){
         this.showCity(SancCity.checkpoints[0])
-        this.checkpoints.shift()
+        SancCity.checkpoints.shift()
         SancCity.session.pause()
 
     }

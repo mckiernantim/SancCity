@@ -27,6 +27,11 @@ SancCity.interface.notify = function (message, type){
         document.getElementById("stat_gear").innerText = "Gear: " + this.convoy.gear;
         document.getElementById("stat_people").innerText = "People: " + this.convoy.people;
         document.getElementById("stat_distance").innerText = "Distance Traveled: " + this.convoy.distance;
+        player = {
+            name: SancCity.convoy.people[0],
+            health: 10,
+            bonus: 2,
+        };
         }
       
  }
