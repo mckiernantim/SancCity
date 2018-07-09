@@ -126,10 +126,10 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title" id='modal-header'>Modal Header</h4>
+                                <h4 class="modal-title" id='modal-header'>Something Happened!</h4>
                             </div>
                             <div class="modal-body">
-                                <p id='modal_text'>Some text in the modal.</p>
+                                <p id='modal_text'></p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal" id="resume_button">Return</button>
@@ -219,8 +219,8 @@
             <div class="row text-center ">
                
                 <div class="col-md-12 text_area city_text">
-                    <button class="continue btn-success">Enter City</button>
-                    <button class="move_on btn-success">Continue On Trail</button>
+                    <button class="continue btn-success" id ="city_continue">Enter City</button>
+                    <button class="move_on btn-success" id = "city_enter">Continue On Trail</button>
                 </div>
             </div>
         </div>
@@ -318,23 +318,27 @@
     
             </div>
             <div class="row text-center">
-                <div class="div col-md-4 text-center fight_image text_area offset-md-1">
+                <div class="div col-md-4 text-center fight_image text_area offset-md-1" >
                    YOU 
-                   <div class="player_stats">
+                   <div class="player_stats" id ="player_name">
                     player_name:   
                     </div>
-                    <div class="player_stats">
+                    <div class="player_stats" id = "player_health">
                         health
                     </div>
                     <div class="player_stats player_weapon">
                         
                     </div>
-                    <button id="attack_button">WEAPON</button>
+                    <button id="attack_button">PUNCH!</button>
                 </div>
-                <div class="col-md-4 text-area fight_text align-right text_area offset-md-2" id= "enemy_name">
-                    Enemy!
-                   <div class="enemy_image text_area" id= "enemy_image">
-                       picture here
+                <div class="col-md-4 text-area fight_text align-right text_area offset-md-2">
+                    <div id="enemy_name"></div>
+               
+                    <div id="enemy_health">
+
+                    </div>
+                   <div class="enemy_image" id= "enemy_image">
+                     
                    </div>
                 </div>
             </div>

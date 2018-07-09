@@ -4,8 +4,8 @@ SancCity.gameMaster = {};
 let enemies = [
     tikiNazi={
         cr: 1,
-        name: "Tiki Nazi",
-        image_path: "",
+        name: "Tiki Guy",
+        image_path: "images/tiki_pixel.jpeg",
         health: 6,
         bonus: 2,
         power: 4,
@@ -54,8 +54,8 @@ let enemies = [
     },
     redneck={
         cr: 1,
-        name: "Redneck Asshole",
-        image_path: "",
+        name: "Overly Agressive Redneck",
+        image_path: "images/redneck_pixel.jpeg",
         health: 4,
         bonus: 2,
         power: 4,
@@ -64,8 +64,8 @@ let enemies = [
     },
     infoWarsIdiot={
         cr: 1,
-        name: "Info Wars Moron",
-        image_path: "",
+        name: "Overzewalous Conspiracy Theprist",
+        image_path: "images/truther_pixel.jpeg",
         health: 5,
         bonus: 2,
         power: 4,
@@ -85,7 +85,7 @@ let enemies = [
     coyoteSmuggler={
         cr: 1,
         name: "Coyote Smuggler",
-        image_path: "",
+        image_path: "images/coyote_pixel.jpeg",
         health: 6,
         bonus: 2,
         power: 6,
@@ -95,7 +95,7 @@ let enemies = [
     suburbanVigilante={
         cr: 1,
         name: "Suburban Vigilante",
-        image_path: "",
+        image_path: "images/white_lady_pixel.jpeg",
         health: 10,
         bonus: 0,
         power: 4,
@@ -105,6 +105,7 @@ let enemies = [
 
 ]
 let enemy;
+let eventListener = false;
 
 
 SancCity.gameMaster.types = [
@@ -360,10 +361,12 @@ SancCity.gameMaster.types = [
 ]
 SancCity.gameMaster.battleMode = function () {
     document.getElementById('fight_container').classList.remove('hidden')
+    document.getElementById('attack_button').classList.remove('hidden')
     document.getElementById('fight_banner').innerText="BATTLE!"
+   
     let turn = 0;
     user = {
-        health: 20,
+        health: 12,
         turn: true,
         bonus: player.bonus
     }
@@ -373,80 +376,92 @@ SancCity.gameMaster.battleMode = function () {
         cr: enemy.cr,
         name: enemy.name,
     }
+    var badGuyMoney = badGuy.cr *Math.floor((Math.random() * 100) + 1)
 
-    if (user.turn === true) {   
+    if (eventListener=== false) { 
+        eventListener =true;
         document.getElementById('attack_button').addEventListener("click", function () {
             turn+=1;
          
-            let playerAttack = Math.floor((Math.random() * 20) + 1) +user.bonus;
-            let badGuyMoney = badGuy.cr *Math.floor((Math.random() * 100) + 1)
-           console.log(playerAttack + " player attack")
-           console.log(user.health+ " user hp")
-           console.log(badGuy.health + "bad guy hp")
-          if (playerAttack > 12) {
+            var playerAttack = Math.floor((Math.random() * 20) + 1) +user.bonus;
+           
+          
+            if (playerAttack >= 12) {
+                console.log("ATTACK BY PLAYER HITS")
                     var damage = Math.floor((Math.random() * 6) + 1)+ player.bonus; {
-                        document.getElementById('battle_feed').innerHTML = "<div> Turn " + turn+": You hit for " + damage + "damage! </div>" + document.getElementById('battle_feed').innerHTML;
+                        document.getElementById('battle_feed').innerHTML = "<div> Turn " + turn+": You hit for <span class ='greenText'> " + damage + "damage! </span> </div>" + document.getElementById('battle_feed').innerHTML;
                     }
-                    
-                    console.log(badGuy.health + "bad guy hp");
-                    console.log(damage)
                     badGuy.health -= damage;
-                    console.log(badGuy.health + "bad guy hp")
+                    document.getElementById("enemy_health").innerText= "Health: " + badGuy.health
+                   
                     //    player victory condition
-                    if (badGuy.health <= 0) {
-                        document.getElementById('battle_feed').innerHTML ="<div>" + enemy.name + "was defeated!  Your party gained " + badGuyMoney + " dollars. </div>";
-                     };
-                        SancCity.convoy.money += badGuyMoney;
 
+                    if (badGuy.health <= 0) {
+                        console.log("PASSED IF STATEMENT AT 395")
+                        document.getElementById('battle_feed').innerHTML ="<div class = 'greenText'>" + enemy.name + "was defeated! </span> Your party gained " + badGuyMoney + " dollars. </div>" + document.getElementById('battle_feed').innerHTML;
+                     
+                        SancCity.convoy.money += badGuyMoney;
+                        document.getElementById("enemy_health").innerText= "Health: " + badGuy.health
                          document.getElementById('victory_button').classList.remove('hidden');
                          document.getElementById('fight_banner').innerText = "Victory!  You gained " +badGuyMoney+" dollars!"
+                         document.getElementById('attack_button').classList.add('hidden')
                          document.getElementById('victory_button').addEventListener('click', function () {
-                        document.getElementById('fight_container').classList.add('hidden');
-                        document.getElementById('victory_button').classList.add('hidden')
-                   
-                        SancCity.session.resume();
-                    })
-
-                }  else document.getElementById('battle_feed').innerHTML = "<div> Turn " + turn+": You swing and miss </div>" + document.getElementById('battle_feed').innerHTML;
-                let badGuyAttack = Math.floor((Math.random() * 20) + 1);
-
-                
-                console.log(badGuyAttack+ " bad  guy attack")
-                
-                    if (badGuyAttack>13 && badGuy.health >0){
-                        var enemy_damage = Math.floor((Math.random() * 6) + 1); {
-                            document.getElementById('battle_feed').innerHTML = "<div> Turn: " + turn+":"+ badGuy.name+ " hit for " + enemy_damage + "damage! </div>" + document.getElementById('battle_feed').innerHTML;
-                            user.health -= enemy_damage;
-                            if (user.health <=0){
-                                SancCity.convoy.people.shift();
-                                document.getElementById('victory_button').classList.remove('hidden');
-                                document.getElementById('fight_banner').innerText = "You lose.  Someone died. "
-                                document.getElementById('victory_button').addEventListener('click', function () {
                             document.getElementById('fight_container').classList.add('hidden');
                             document.getElementById('victory_button').classList.add('hidden')
-                           
+                            document.getElementById('enemy_name').innerText = ""
+                            turn = 0;
                             SancCity.session.resume();
-                            }
-                        )
+                            
+                    })
+                }
+
+            }
+            // IF PLAYER MISSES 
+            else if(playerAttack<12) {
+                    document.getElementById('battle_feed').innerHTML = "<div> Turn " + turn+": <span class='yellowText'>You swing and miss</span> </div>" + document.getElementById('battle_feed').innerHTML ;
+            }
+
+            var badGuyAttack = Math.floor((Math.random() * 20) + 1)
+            console.log(badGuyAttack+ " bad  guy attack")
+                //IF BAD GUY HITS AND IS STILL ALIVE
+            if (badGuyAttack>=13 && badGuy.health >0){
+                console.log("BAD GUY HITS AND HE HAS HEALTH")
+                var enemy_damage = Math.floor((Math.random() * 6) + 1); {
+                document.getElementById('battle_feed').innerHTML = "<div> Turn: " + turn+":"+ badGuy.name+ " <span class= 'yellowText'> hit YOU for " + enemy_damage + "</span> damage! </div>" + document.getElementById('battle_feed').innerHTML;
+                user.health -= enemy_damage;
+                document.getElementById("player_health").innerText= user.health
+                
+                if (user.health <=0){
+                    SancCity.convoy.people.shift();
+                    document.getElementById('victory_button').classList.remove('hidden');
+                    document.getElementById('fight_banner').innerText = "You lose.  Someone died. "
+                    document.getElementById('victory_button').addEventListener('click', function () {
+                        document.getElementById('fight_container').classList.add('hidden');
+                        document.getElementById('victory_button').classList.add('hidden')
+                        document.getElementById('player_name').innerText = user.health;   
+                        SancCity.session.resume();
                     }
-                } 
-        } else if (badGuy.health >0){document.getElementById('battle_feed').innerHTML = "<div> Turn: " + turn+": " + badGuy.name+" swings and misses </div>" + document.getElementById('battle_feed').innerHTML;}
-        })
+                    )
+            }
+        } 
+    } 
+        else if (badGuy.health >0 && badGuyAttack< 13){
+            console.log('ENEMY SWINGS AND MISSES')
+            document.getElementById('battle_feed').innerHTML = "<div> Turn: " + turn+": <span class='greenText'>" + badGuy.name+" swings and misses</span> </div>" + document.getElementById('battle_feed').innerHTML;}
+})
     
     
                
                
         
     }
+
 }
 
 
 
 SancCity.gameMaster.startFight=function() {
     SancCity.session.pause();
-    
-   
-
     var filteredEnemeies = [];
     for (i = 0; i < enemies.length; i++) {
         if (enemies[i].cr <= SancCity.cr) {
@@ -457,7 +472,12 @@ SancCity.gameMaster.startFight=function() {
     console.log(randomRoll + "RANDOM ROLL FOR DETERMINING FIGHT ")
     enemy =filteredEnemeies[randomRoll];
     console.log(enemy)
-    document.getElementById('enemy_name').innerText = enemy.name;
+    document.getElementById('enemy_name').innerText = enemy.name +  document.getElementById('enemy_name').innerText ;
+    document.getElementById('enemy_health').innerHTML = "<p> Health: " + enemy.health + "</p>";
+    document.getElementById('enemy_image').style.backgroundImage = "url("+ enemy.image_path+ ")";
+    document.getElementById('player_name').innerText = SancCity.convoy.people[0];
+    document.getElementById('player_health').innerText = "Health: " + 12;
+
     // document.getElementById('enemy_image').style.backgroundImage = "url(" + enemy.image_path + ")"
     document.getElementById("battle_feed").innerText = "A " + enemy.name + " stands in your way. " + enemy.flavorText;
     SancCity.gameMaster.battleMode();
@@ -529,6 +549,8 @@ SancCity.gameMaster.randomEncounter = function () {
     } else
     if (encounterData.type === "FIGHT") {
         SancCity.gameMaster.startFight();
+        this.interface.notify("Attacked!", "negative")
+
     }
 }
 

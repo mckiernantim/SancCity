@@ -139,7 +139,7 @@ let battleMode =function(){
     if (player.turn == true){
         document.getElementById('attack_button').addEventListener("click", function(){
            let playerAttack =  Math.floor(Math.random() * 20) + 1 + player.bonus;
-           if (playerAttack >12)
+         
            
            
            

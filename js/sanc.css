@@ -104,7 +104,7 @@ margin-top:  50px;
 }
 .enemy_image{
     background: #ed9031;
-    background-image: url("../images/7-11lady.jpg");
+   
     height: 250px;
     border-style: groove;
     border-width: 20px;
@@ -123,4 +123,14 @@ margin-top:  50px;
     border-color: #eb892f;
   
     background-size: cover;}
-    
+.yellowText{
+    color:yellow;
+}
+.greenText{
+    color:#29a745;
+}
+.redText{
+    color: #e41616;
+    text-shadow: 3px 2px #040404;
+ 
+}

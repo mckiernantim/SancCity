@@ -12,7 +12,7 @@ SancCity.day_per_move = .2;
 SancCity.easy_pace = 4;
 SancCity.hard_pace = 20;
 SancCity.player_win = 50000;
-SancCity.event_chance = .82;
+SancCity.event_chance = .18;
 SancCity.enemy_cr = 5;
 SancCity.enemy_loot_avg = 5;
 SancCity.space_per_truck = 1000;
@@ -95,7 +95,7 @@ SancCity.shops = [
 SancCity.checkpoints= [
     {
         name:"Tucson",
-        distance: 10000,
+        distance: 4000,
         image_path: "images/tucson-sepia.jpeg",
     },
 ];
