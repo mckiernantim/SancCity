@@ -8,7 +8,7 @@ SancCity.interface.status_count = 0;
 // this send s a messaage to the user
 SancCity.interface.notify = function (message, type){
 
-    document.getElementById('feed').innerHTML = '<div id="update-' + SancCity.interface.status_count + '">Day '+ Math.ceil(this.convoy.day) + ': ' + message+'</div>' + document.getElementById('feed').innerHTML;
+    document.getElementById('feed').innerHTML = '<div id="update-' + SancCity.interface.status_count + '">Day '+ Math.ceil(this.convoy.day) + ': ' + message+ '</div>' + document.getElementById('feed').innerHTML;
     SancCity.interface.status_count++;
     let i = SancCity.interface.status_count;
     if (i >= 7 ){
@@ -27,6 +27,11 @@ SancCity.interface.notify = function (message, type){
         document.getElementById("stat_gear").innerText = "Gear: " + this.convoy.gear;
         document.getElementById("stat_people").innerText = "People: " + this.convoy.people;
         document.getElementById("stat_distance").innerText = "Distance Traveled: " + this.convoy.distance;
+        player = {
+            name: SancCity.convoy.people[0],
+            health: 10,
+            bonus: 2,
+        };
         }
       
  }
@@ -36,7 +41,7 @@ SancCity.interface.notify = function (message, type){
      let hiddenShop = document.getElementById("hidden-store");
      let randomIndex = (Math.floor((Math.random() * SancCity.shops.length)));
      let thisShop = SancCity.shops[randomIndex];
-     console.log(thisShop)
+    
      
     //  populate our now visible div
      hiddenShop.classList.remove("hidden");
@@ -139,14 +144,14 @@ SancCity.interface.notify = function (message, type){
         for(let i=1; i<= shop_object.length;i++){
            
             let itemNames = document.getElementsByClassName('item_'+i.toString())
-            console.log(itemNames)
+           
             let itemPrices = document.getElementsByClassName('item_'+i.toString()+"_price")
-            console.log(itemPrices)
+      
             let itemQuantity = document.getElementsByClassName('item_'+i.toString()+"_quantity")
-            console.log(itemQuantity)
+         
             for (let j = 0; j<itemNames.length; j++) {
                 itemNames[j].innerText = shop_object[i-1]['name']; 
-                console.log(itemNames[j].innerText);
+                
             }
             for (let k = 0; k<itemPrices.length; k++) {
                 itemPrices[k].innerText = shop_object[i-1].price; 
@@ -183,21 +188,21 @@ SancCity.interface.notify = function (message, type){
     SancCity.interface.purchaseItem = function(num){
         
         let item = document.getElementsByClassName("item_"+num)[0].innerText;
-        console.log(document.getElementsByClassName("item_"+num)[0])
+        
         let price = parseInt(document.getElementsByClassName("item_"+num+"_price")[1].innerText, 10);
-        console.log(document.getElementsByClassName("item_"+num+"_price"))
+       
         let purchase = (document.getElementsByClassName("item_"+num+"_input"));
-        console.log(purchase.length)
+        console.log(purchase + "%%%%%%%%%%%%%%%%")
+        
         let quantity;
         let this_purchase=0;
             for (i=0;i<purchase.length;i++){
-                console.log(purchase[i] + "THIS IS THE LOOP")
+               
                 if (purchase[i].value>0)
                     { quantity= i;
                       this_purchase = parseInt(purchase[i].value);}
             }
-        console.log(purchase)
-          console.log(quantity)
+      
             let total =  price * this_purchase;
             if(total > SancCity.convoy.money){
                 SancCity.interface.notify("Hey BUDDY, you ain't got that kinda cash!")
@@ -206,11 +211,9 @@ SancCity.interface.notify = function (message, type){
                
                SancCity.convoy.money -= total;
                SancCity.convoy[item] += this_purchase;
-               console.log(quantity)
+            
                document.getElementsByClassName('item_'+quantity+"_quantity")[0].innerText -= this_purchase;
-               console.log(document.getElementsByClassName('item_'+quantity+"_quantity")[0])
-               console.log(item)
-                console.log(SancCity.convoy[item])
+             
                SancCity.interface.refreshConvoy();
             }      
     };
@@ -218,7 +221,7 @@ SancCity.interface.notify = function (message, type){
     SancCity.interface.populateNames = function(){
         for (i=1; i<6; i++){
           SancCity.convoy.people.push(" "+ document.getElementById("player_name_"+i).value)
-          console.log(document.getElementById("player_name_"+i).value)
+          
         }
 
     }

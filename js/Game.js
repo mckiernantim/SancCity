@@ -9,17 +9,19 @@ SancCity.space_per_gear = 1;
 SancCity.space_per_items = 1;
 SancCity.game_pace = 1200;
 SancCity.day_per_move = .2;
-SancCity.easy_pace = 4;
+SancCity.easy_pace = 2;
 SancCity.hard_pace = 20;
-SancCity.player_win = 5000;
-SancCity.event_chance = .12;
+SancCity.player_win = 50000;
+SancCity.event_chance = .35;
 SancCity.enemy_cr = 5;
 SancCity.enemy_loot_avg = 5;
 SancCity.space_per_truck = 1000;
-SancCity.food_per_person = .2;
+SancCity.food_per_person = .5;
 SancCity.water_per_person = .4;
 SancCity.gas_per_day = 1;
 SancCity.dead_people = [];
+SancCity.cr = 1;
+player = {};
 
 // preset values for our random shops
 SancCity.andreasShop = [
@@ -96,6 +98,44 @@ SancCity.checkpoints= [
         distance: 1000,
         image_path: "images/tucson-sepia.jpeg",
     },
+    {
+        name:"Phoenix",
+        distance: 1800,
+        image_path: "images/Phoenix_pixel.jpeg",
+    },
+    {
+        name:"Flagstaff",
+        distance: 2900,
+        image_path: "images/flagstaff_pixel.jpeg",
+    },
+    {
+        name:"Kingman",
+        distance: 3500,
+        image_path: "images/kingman_pixel.jpeg",
+    },
+    {
+        name:"Needles",
+        distance: 4400,
+        image_path: "images/needles_pixel.jpeg",
+    },
+    {
+        name:"Barstow",
+        distance: 5000,
+        image_path: "images/barstow_pixel.jpeg",
+    },
+    {
+        name:"Bakersfield",
+        distance: 6100,
+        image_path: "images/bakersfield_pixel.jpeg",
+        
+    },
+    {
+        name:"Castaic",
+        distance: 7000,
+        image_path: "images/castaic_pixel.jpeg",
+    },
+
+
 ];
 SancCity.session = {};
 
@@ -206,7 +246,7 @@ SancCity.session.refreshGame = function () {
     // check to see if we made it to a city
     if (this.convoy.distance > SancCity.checkpoints[0].distance){
         this.showCity(SancCity.checkpoints[0])
-        this.checkpoints.shift()
+        SancCity.checkpoints.shift()
         SancCity.session.pause()
 
     }
@@ -214,6 +254,8 @@ SancCity.session.refreshGame = function () {
     if (Math.random() < SancCity.event_chance) {
         this.gameMaster.randomEncounter()
     }
+    document.getElementById('van_img').style.left = (200 * SancCity.convoy.distance/SancCity.checkpoints[0].distance) + 'px'; + document.getElementsByClassName('van_img')[0].style
+   
 };
 SancCity.session.pause = function () {
     this.gameRunning = false;
@@ -233,37 +275,44 @@ SancCity.session.showCity = function (city){
     cityDiv = document.getElementById("cityDiv");
     cityDiv.classList.remove('hidden');
     cityDiv.style.backgroundImage ="url("+city.image_path+")";
-    document.getElementById("city_headline").innerText= "Welcome to " +SancCity.checkpoints[0].name 
-    
+    document.getElementById("city_headline").innerText= "Welcome to " +SancCity.checkpoints[0].name ;
+    document.getElementById('van_img').classList.add("hidden")
+    SancCity.cr+=1
 
 }
 
 
 
-   // page turning functions for the start of the gamne.
+   // page turning functions for the start of the gamne and checkpoints
     document.getElementById('page_1_continue').addEventListener('click', function(){
-    document.getElementById('page_1').classList.add("hidden");
-    document.getElementById('page_2').classList.remove("hidden")
-});
+        document.getElementById('page_1').classList.add("hidden");
+        document.getElementById('page_2').classList.remove("hidden")
+ });
     document.getElementById('page_2_continue').addEventListener('click', function(){
-    document.getElementById('page_2').classList.add("hidden");
-    document.getElementById('main_game').classList.remove("hidden");
-    document.getElementById('andrea-store').classList.remove("hidden");
-    
-    SancCity.session.init()
-    SancCity.interface.populateNames()
-    document.getElementById("stat_money").innerText= 1800;
-    document.getElementById("stat_food").innerText= 100;
-    document.getElementById("stat_water").innerText= 100
-    document.getElementById("stat_people").innerText = 5;
-    SancCity.interface.populateShop(SancCity.andreasShop);
-    SancCity.interface.refreshConvoy();
-    SancCity.interface.notify('Better stock up on goods...')
+        document.getElementById('page_2').classList.add("hidden");
+        document.getElementById('main_game').classList.remove("hidden");
+        document.getElementById('andrea-store').classList.remove("hidden");
+        
+        SancCity.session.init()
+        SancCity.interface.populateNames()
+        document.getElementById("stat_money").innerText= 1800;
+        document.getElementById("stat_food").innerText= 100;
+        document.getElementById("stat_water").innerText= 100
+        document.getElementById("stat_people").innerText = 5;
+        SancCity.interface.populateShop(SancCity.andreasShop);
+        SancCity.interface.refreshConvoy();
+        SancCity.interface.notify('Better stock up on goods...')
 });
     document.getElementById('start_game').addEventListener('click', function(){
-    document.getElementById('page_2').classList.add("hidden");
-    document.getElementById('andrea-store').classList.add('hidden')
-    SancCity.session.startGame();
+        document.getElementById('page_2').classList.add("hidden");
+        document.getElementById('andrea-store').classList.add('hidden');
+        document.getElementById('van_img').classList.remove('hidden');
+        SancCity.session.startGame();
+});
+    document.getElementById('city_continue').addEventListener('click', function(){
+        document.getElementById('cityDiv').classList.add("hidden");
+        document.getElementById('van_img').classList.remove("hidden")
+        
 });
 
 

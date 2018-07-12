@@ -20,25 +20,12 @@
     <div class="container-flex" id="page_1">
         <div class="row">
             <div class="col-md-6 intro_text text_area">
-                <p> The year is 2018. Central and South America are at a crossroads. Power vacuums created by dictatorships and
-                    failed socialist and the echoes of colonialism have given rise to drug cartels, fueled by the prohibition
-                    and insatiable drug lust of USA. Rather than stay and raise their children under the boots of Drug Lords,
-                    many citizens have fled north WITH hopes of America and a better way of life. However, in the year 2016
-                    the United States elected as it's president a game show host who saw those not of Anglo-Saxon descent
-                    to be subhuman and inferior. Now Lady Liberty, from her beacon hand, has dimmed the light of world-wide
-                    welcome. No longer does she your poor, your tired, your huddled masses yearning to be free accept. The
-                    nation has shut its doors to migrants, and those who are caught crossing the border are imprissoned without
-                    trial, their children ripped from their arms. Yet in this land their is still hope. Bastions of understanding
-                    and compassion, places of diversity and tolerance, hold true to the words laid down by the poet Lazarus
-                    so many generaitons ago. Sanctuary citites they are called, stand with open arms and promises of protections
-                    for anyone who should make the trek to them. And through this great land, there is a secret trail. A
-                    road paved by those who have made the journey, secret and reliable, inspired by those brave settlers
-                    who once made the journey west across this great land to places like, oh - lets say Oregon -. This secret
-                    road is long, and its trail rocky. The going will be slow, but it is the safer route. This road is not
-                    without its perils, but you have the power to manage them. This road stands ready for you and your family.
-                    You have $1000. You have an old RV. You have a the trail.
+                <p> In the year 2016 the people of the United States of America elected as their president, <span class="yellowText">a racist game show host.</span>   In the fall of 2018, after enacting a policy to tear migrant families from their children,  immigration law becomes even harsher, forcing those seeking asylum in the united states to flee through even more dangerous sections of the american desert.
+                    Soon after, he orders <span class ="yellowText">"DIRECTIVE 666"</span>, a secret message  mobilizing the radical fringe of his base in an attempt to stop immigration to this nation completely.  But at  <span class="greenText"> the heart of america is the blood of countless imigrants, </span> the poor, the tired, the huddled masses who once yearned to be free now teach the nations schools, proudly don the uniforms of her military, build her cities, and keep her children safe at night.
+                    There are those who have stood up to this <span class="yellowText">  game show host turned president </span>, and have begun a resistance.  A seret trail modeled after other trails from the nations past that once led to places like, oh - lets say <spang class="greenText">OREGON</spang> has emerged leading from Nogales, Mexico, to Los Angeles California, where immigrant families will be safe in a city that offers them Sancutary.  The trail is not without its dangers and the going is slow.  But the trail needs leaders.  <span class ="greenText">The trail needs you. </span>
+                    <span class= "yellowText">There are tremendous injustices happening at this nations border right now. </span> Can you lead people safely to...
                 </p>
-                <button class="btn success" id="page_1_continue">WTF AMERICA?!</button>
+                <button class="btn success" id="page_1_continue">TO WHERE?!</button>
             </div>
             <div class="col-md-6 trump">
             </div>
@@ -48,13 +35,15 @@
         <div class="row">
             <div class="col-md-12 text-center text_area headline">
                 <h1 class="banner">SANCTUARY CITY</h1>
-                <h3 class="sub-banner">Journey to Los Angeles </h3>
+                <h3 class="sub-banner"> The Journey to <span style="text-decoration: line-through">Oregon</span> Los Angeles in Late-Stage-Capitalism</h3> 
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 text_area">
                 <form>
+                    <H4 class= "sub-banner"> Enter your names</H4>
                     <input class="form-control form-control-lg" id="player_name_1" type="text" placeholder="Input Name">
+                 
                     <input class="form-control form-control-lg" id="player_name_2" type="text" placeholder="Input Name">
                     <input class="form-control form-control-lg" id="player_name_3" type="text" placeholder="Input Name">
                     <input class="form-control form-control-lg" id="player_name_4" type="text" placeholder="Input Name">
@@ -115,23 +104,23 @@
         </div>
         <div class="row">
             <button type="button" class="btn btn-success" id="resume_button" data-target="#exampleModalCenter">
-                Resume Jorney.
+                Resume Journey.
             </button>
 
             <div class=" col-md-12 ">
                 <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog text_area">
 
                         <!-- THIS IS THE HIDDEN EVENT MODAL -->
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title" id='modal-header'>Modal Header</h4>
+                                <h4 class="modal-title" id='modal-header'>Something Happened!</h4>
                             </div>
-                            <div class="modal-body">
-                                <p id='modal_text'>Some text in the modal.</p>
+                            <div class="modal-body text_area">
+                                <p id='modal_text'></p>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer text_area">
                                 <button type="button" class="btn btn-default" data-dismiss="modal" id="resume_button">Return</button>
                             </div>
                         </div>
@@ -177,7 +166,7 @@
                             <span class="item_2_price"></span>
                         </div>
                         <div >In Stock:
-                            <span class="item_2_quantity"> </span>
+                            <span id="item_2_quantity"> </span>
                         </div>
                         <input type="number" size="25" name="whatever" class="item_2_input" required="">
 
@@ -219,8 +208,8 @@
             <div class="row text-center ">
                
                 <div class="col-md-12 text_area city_text">
-                    <button class="continue btn-success">Enter City</button>
-                    <button class="move_on btn-success">Continue On Trail</button>
+                    <button class="continue btn-success" id ="city_enter">Enter City</button>
+                    <button class="move_on btn-success" id = "city_continue">Continue On Trail</button>
                 </div>
             </div>
         </div>
@@ -244,7 +233,7 @@
                             <span class="item_1_price"></span>
                         </div>
                         <div >In Stock:
-                            <span class="item_1_quantity"></span>
+                            <span id="item_1_quantity"></span>
                         </div>
                         <input type="number" size="25" name="whatever" class="item_1_input" required="">
 
@@ -258,7 +247,7 @@
                             <span class="item_2_price"></span>
                         </div>
                         <div>In Stock:
-                            <span class="item_2_quantity"> </span>
+                            <span id="item_2_quantity"> </span>
                         </div>
                         <input type="number" size="25" name="whatever" class="item_2_input" required="">
 
@@ -272,7 +261,7 @@
                             <span class="item_3_price"></span>
                         </div>
                         <div>In Stock:
-                            <span class="item_3_quantity"></span>
+                            <span id="item_3_quantity"></span>
                         </div>
                         <input type="number" size="25" name="whatever" class="item_3_input" required="">
 
@@ -288,10 +277,9 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <p> "Sup, I'm Andrea and this is my store. You got a long road ahead with dangerous border patrols, ravenous
-                    trumpers, porbably nazis and you may possibly die of dysentery. Lucky for you I got the best gear at
-                    the best prices in town. You'll need water, gas, and food to survive and alot more than youb currentl have. And oned ay if Tim gets gear working
-                    you can buy items to fight nazis! Once you're done click checkout and your journey begins!" </p>
+                <p> "Sup, I'm Andrea and this is my store. You got a long road ahead with <span class="yellowText">dangerous border patrols, ravenous
+                    trumpers, porbably nazis and you may possibly die of dysentery.</span>  Lucky for you I got the best gear at
+                    the best prices in town. <span class="greenText"> You'll need water, gas, and food to survive </span> and alot more than youb currently have. Once you're done click checkout and your journey begins!" </p>
                     <button class="buy_item btn btn-success" id="start_game">LET'S ROLL</button>
 
             </div>
@@ -300,8 +288,57 @@
 
 
     </div>
-    </div>
+    
+    <div class="container text-center hidden fight_container text_area" id="fight_container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h2 id="fight_banner">BATTLE!</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-12" id= "battle_feed">
+                    <h1>
+                        battle text here
+                    </h1>
+                    <div class= "text_area">
+                        bla bla bla
+                    </div>
+                </div>
+    
+            </div>
+            <div class="row text-center">
+                <div class="div col-md-4 text-center fight_image text_area offset-md-1" >
+                   YOU 
+                   <div class="player_stats" id ="player_name">
+                    player_name:   
+                    </div>
+                    <div class="player_stats" id = "player_health">
+                        health
+                    </div>
+                    <div class="player_stats player_weapon">
+                        
+                    </div>
+                    <button id="attack_button">FIGHT!</button>
+                </div>
+                <div class="col-md-4 text-area fight_text align-right text_area offset-md-2">
+                    <div id="enemy_name"></div>
+               
+                    <div id="enemy_health">
 
+                    </div>
+                   <div class="enemy_image" id= "enemy_image">
+                     
+                   </div>
+                </div>
+            </div>
+        
+            <button class ="hidden" id="victory_button">Continue on Trail</button>
+        </div>
+    
+                
+                <img src  = "images/small_van.png"class="van_img hidden" id="van_img">
+                
+        
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -310,12 +347,13 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
-    <script src='js/scroll.js'></script>
+<!-- 
+    <script src='js/scroll.js'></script> -->
     <script src='js/event.js'></script>
     <script src='js/Convoy.js'></script>
     <script src='js/Interface.js'></script>
     <script src='js/Game.js'></script>
+    
 
 </body>
 

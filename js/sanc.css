@@ -7,23 +7,42 @@
     position: fixed;
     
 }
+/* body{
+    font-family: cowboy !important;
+    color: #fffbf4 !important;
+} */
 p{
     font-size: 1em !important;
 }
 .text_area{
     background: #d64516;
-    opacity: .9;
+    opacity: 1.1em;
     border-style: groove;
     border-width: 20px;
     border-color: #eb892f;
     font-family: cowboy !important;
-    color: #dad9dc;
+    color: #fffbf4;
     text-shadow: 3px 3px black;
 
 }
+.main_screen{
+    max-height:420px;
+    margin-bottom: 50px;
+}
+.van_img{
+  
+   
+  
+    height: 1%;
+    margin-right: 4px;
+    position: relative;
+    top: 400px;
+    
+    
+}
 body{
     background-image: url("../images/pixelDesert.jpg");
-    background-position-y: -15%;
+    
     background-size: cover;
     background-repeat: no-repeat;
     
@@ -53,7 +72,7 @@ body{
 .shop_image{
     
     background: #ed9031;
-    background-image: url("../images/7-11lady.jpg");
+    background-image: url("../images/andrea_pixel.jpeg");
     height: 250px;
     border-style: groove;
     border-width: 20px;
@@ -101,4 +120,42 @@ margin-top:  50px;
 
 .img_row{
     height:85%;
+}
+.enemy_image{
+    background: #ed9031;
+   
+    height: 250px;
+    border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f;
+  
+    background-size: cover;
+    
+    
+}
+.player_weapon{
+    background: #ed9031;         
+    background-image: url("../images/cap_pixel.jpeg");
+    height: 250px;
+    border-style: groove;
+    border-width: 20px;
+    border-color: #eb892f;
+  
+    background-size: cover;}
+.yellowText{
+    color:yellow;
+}
+.greenText{
+    color:#29a745;
+}
+.redText{
+    color: #e41616;
+    text-shadow: 3px 2px #040404;
+ 
+}
+.modal-content {
+    background: #d64516 !important
+}
+.fight_container{
+    margin-top: 50px;
 }
