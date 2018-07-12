@@ -15,7 +15,7 @@ let enemies = [
     racistCop={
         cr: 3,
         name: "Racist Cop",
-        image_path: "",
+        image_path: "images/cop_pixel.jpeg",
         health: 10,
         bonus: 2,
         power: 6,
@@ -25,7 +25,7 @@ let enemies = [
     sherriffArpaio={
         cr: 5,
         name: "Sherrif Arpaio",
-        image_path: "",
+        image_path: "images/arpio_pixel.jpeg",
         health: 10,
         bonus: 5,
         power: 8,
@@ -35,7 +35,7 @@ let enemies = [
     scaryNazi={
         cr: 2,
         name: "Scary Nazi",
-        image_path: "",
+        image_path: "images/nazi_pixel.jpeg",
         health: 10,
         bonus: 2,
         power: 6,
@@ -45,7 +45,7 @@ let enemies = [
     borderPatrol={
         cr: 4,
         name: "Border Patrol",
-        image_path: "",
+        image_path: "images/border_pixel.jpeg",
         health: 8,
         bonus: 2,
         power: 6,
@@ -75,7 +75,7 @@ let enemies = [
     pizzaGateBeliever={
         cr: 3,
         name: "Pizza Gate Believer",
-        image_path: "",
+        image_path: "pizza_pixel.jpeg",
         health: 12,
         bonus: 2,
         power: 6,
@@ -407,6 +407,7 @@ SancCity.gameMaster.battleMode = function () {
                          document.getElementById('attack_button').classList.add('hidden')
                          document.getElementById('victory_button').addEventListener('click', function () {
                             document.getElementById('fight_container').classList.add('hidden');
+                            document.getElementById("van_img").classList.remove('hidden');
                             document.getElementById('victory_button').classList.add('hidden')
                             document.getElementById('enemy_name').innerText = ""
                             turn = 0;
@@ -437,7 +438,8 @@ SancCity.gameMaster.battleMode = function () {
                     document.getElementById('fight_banner').innerText = "You lose.  Someone died. "
                     document.getElementById('victory_button').addEventListener('click', function () {
                         document.getElementById('fight_container').classList.add('hidden');
-                        document.getElementById('victory_button').classList.add('hidden')
+                        document.getElementById('victory_button').classList.add('hidden');
+                        document.getElementById("van_img").classList.remove('hidden');
                         document.getElementById('player_name').innerText = user.health;   
                         SancCity.session.resume();
                     }
@@ -481,6 +483,7 @@ SancCity.gameMaster.startFight=function() {
     // document.getElementById('enemy_image').style.backgroundImage = "url(" + enemy.image_path + ")"
     document.getElementById("battle_feed").innerText = "A " + enemy.name + " stands in your way. " + enemy.flavorText;
     SancCity.gameMaster.battleMode();
+    document.getElementById('van_img').classList.add("hidden")
 }
 
 

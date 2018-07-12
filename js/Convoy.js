@@ -20,8 +20,7 @@ SancCity.convoy.init = function(stats){
     
 };
 
-SancCity.convoy.calculate_space = function()
-{
+SancCity.convoy.calculate_space = function(){
     let droppedGear= 0;
     let droppedItems=0;
     let droppedFood=0;
