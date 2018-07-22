@@ -12,7 +12,7 @@ SancCity.day_per_move = .2;
 SancCity.easy_pace = 2;
 SancCity.hard_pace = 20;
 SancCity.player_win = 50000;
-SancCity.event_chance = .35;
+SancCity.event_chance = .18;
 SancCity.enemy_cr = 5;
 SancCity.enemy_loot_avg = 5;
 SancCity.space_per_truck = 1000;
@@ -300,6 +300,7 @@ SancCity.session.showCity = function (city){
         document.getElementById("stat_water").innerText= 100
         document.getElementById("stat_people").innerText = 5;
         SancCity.interface.populateShop(SancCity.andreasShop);
+        document.getElementById('hidden-store').classList.add('hidden')
         SancCity.interface.refreshConvoy();
         SancCity.interface.notify('Better stock up on goods...')
 });

@@ -333,30 +333,30 @@ SancCity.gameMaster.types = [
         text: "A group of millenials approach.  After lamenting the state of their country, they take selfies with your family and leave a small donation. Money gained: "
     },
 
-    // {
-    //         type: 'SHOP',
-    //         style: 'neutral',
-    //         name: 'Roadside Gas Station',
-    //         text: "A small gas station stands by the road.  The proprieter offers supplies.",
-    // },
-    // {
-    //         type: 'SHOP',
-    //         style: 'neutral',
-    //         name: 'Smugglers ',
-    //         text: "A group of smugglers flag you down offering exotic goods.",
-    // },
-    // {
-    //         type: 'SHOP',
-    //         style: 'neutral',
-    //         name: 'Traveling Convoy',
-    //         text: "A fellow traveler of the trail waves you down.  He offers to sell some extra supplies",
-    // },
-    // {
-    //         type: 'SHOP',
-    //         style: 'neutral',
-    //         name: 'Truck Stop',
-    //         text: "A sleepy truck stop.  The man behind the counter eyes you suspiciously.",
-    // },
+    {
+            type: 'SHOP',
+            style: 'neutral',
+            name: 'Roadside Gas Station',
+            text: "A small gas station stands by the road.  The proprieter offers supplies.",
+    },
+    {
+            type: 'SHOP',
+            style: 'neutral',
+            name: 'Smugglers ',
+            text: "A group of smugglers flag you down offering exotic goods.",
+    },
+    {
+            type: 'SHOP',
+            style: 'neutral',
+            name: 'Traveling Convoy',
+            text: "A fellow traveler of the trail waves you down.  He offers to sell some extra supplies",
+    },
+    {
+            type: 'SHOP',
+            style: 'neutral',
+            name: 'Truck Stop',
+            text: "A sleepy truck stop.  The man behind the counter eyes you suspiciously.",
+    },
 
 ]
 SancCity.gameMaster.battleMode = function () {
@@ -534,7 +534,7 @@ SancCity.gameMaster.randomEncounter = function () {
     } else
     if (encounterData.type === "SHOP") {
         document.getElementById('shop_name').innerText = encounterData.name
-        this.interface.showShop();
+        this.interface.populateShop();
         SancCity.session.pause();
         SancCity.interface.refreshConvoy();
     } else
