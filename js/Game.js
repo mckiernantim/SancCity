@@ -22,6 +22,9 @@ SancCity.gas_per_day = 1;
 SancCity.dead_people = [];
 SancCity.cr = 1;
 player = {};
+var song = new Audio("images/scary.mp3")
+song.play()
+let playing = true;
 
 // preset values for our random shops
 SancCity.andreasShop = [
@@ -259,11 +262,18 @@ SancCity.session.refreshGame = function () {
 };
 SancCity.session.pause = function () {
     this.gameRunning = false;
+    song.pause();
+    
 };
 SancCity.session.resume = function () {
     this.gameRunning = true;
     this.step();
-}
+    var song = new Audio("images/sancCitySong.mp3")
+    if (playing = false){
+        song.play();
+        playing = true;
+        };
+    }
 // resume the game after pause or event
 $(document).ready(function () {
     $("#resume_button").click(function () {
@@ -287,11 +297,17 @@ SancCity.session.showCity = function (city){
     document.getElementById('page_1_continue').addEventListener('click', function(){
         document.getElementById('page_1').classList.add("hidden");
         document.getElementById('page_2').classList.remove("hidden")
+        
+        song = new Audio('images/sancCitySong.mp3')
+        song.play();
  });
     document.getElementById('page_2_continue').addEventListener('click', function(){
         document.getElementById('page_2').classList.add("hidden");
         document.getElementById('main_game').classList.remove("hidden");
         document.getElementById('andrea-store').classList.remove("hidden");
+        
+        song = new Audio("images/shop.mp3")
+        song.play();
         
         SancCity.session.init()
         SancCity.interface.populateNames()
