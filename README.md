@@ -1,7 +1,6 @@
 ![alt text](https://i.pinimg.com/originals/94/8c/33/948c332c4ac55dd82afbf68d7f2b5ad6.png)
 # Sanctuary City!  The Game!
-
-### Using only Javascript, Bootstrap, CSS and HTML5, SanctuaryCity is a reimagining of the Oregon Trail in the era of the 45th prsident.  The player leads a team of of travelers from Nogales, Mexico to Los Angeles, a Sanctuary City where they will be safe.  Along the way, food, gas, and water stores are depleeted as the game progresses, and radom events occur - including being attacked by tiki-torch weilding zealots...
+SanctuaryCity is a reimagining of the Oregon Trail in the era of the 45th prsident.  The player leads a team of of travelers from Nogales, Mexico to Los Angeles, a Sanctuary City where they will be safe.  Along the way, food, gas, and water stores are depleeted as the game progresses, and radom events occur - including being attacked by tiki-torch weilding zealots...
 
 
  www.Sanctuarycitygame.com
@@ -10,7 +9,7 @@
 
 ## Hows it work?
 
-the core of the game engine is a Javascript Timestamp saved to a variable 'pastTime' 
+the core of the game engine is a Javascript Timestamp saved to a variable 'pastTime' which is checked against a variable game_pace:
 
       SancCity.session.step = function (timestamp) {
         if (!this.pastTime) {
