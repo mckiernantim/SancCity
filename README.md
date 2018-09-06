@@ -1,4 +1,4 @@
-![alt text]https://github.com/mckiernantim/SancCity/blob/master/images/title_img.png
+![alt text](https://github.com/mckiernantim/SancCity/blob/master/images/title_img.png)
 # Sanctuary City!  The Game!
 SanctuaryCity is a reimagining of the Oregon Trail in the era of the 45th prsident.  The player leads a team of of travelers from Nogales, Mexico to Los Angeles, a Sanctuary City where they will be safe.  Along the way, food, gas, and water stores are depleeted as the game progresses, and radom events occur - including being attacked by tiki-torch weilding zealots...
 
