@@ -4,10 +4,11 @@ SanctuaryCity is a reimagining of the Oregon Trail in the era of the 45th prside
 
 
  www.Sanctuarycitygame.com
-
+![alt text](https://github.com/mckiernantim/SancCity/blob/master/images/trump_img.png)
 
 
 ## Hows it work?
+ ![alt text](https://github.com/mckiernantim/SancCity/blob/master/images/journey_img.png)
 
 the core of the game engine is a Javascript Timestamp saved to a variable 'pastTime' which is checked against a variable game_pace:
 
@@ -27,10 +28,19 @@ the core of the game engine is a Javascript Timestamp saved to a variable 'pastT
 
 };
   once the check is made, the game progresses draining various resources at each step and making other rolls to see if random events happen.
+ 
+  
 
 ## Random Events!
+![alt text](https://github.com/mckiernantim/SancCity/blob/master/images/event_img.png)
 
 event.js contains a number of JSON objects and fucntions that randomly determine if the player is met with a random events from combat to resources depletion to new people joining the caravan.
+
+
+## Fights!
+![alt text](https://github.com/mckiernantim/SancCity/blob/master/images/fight_img.png)
+A certain number of random events will create a fight!  Battles will increase in difficulty as the players progress and also serve as an opportunity for the players to earn money to buy more gear.  However, the road is dangerous and should a player lose a battle they lose a member of their team FOREVER
+
 
 ## Coming soon!
 Currently in development are "city events" and "trade caravans".  Trade caravans will allow players to trade money for supplies with random events to help them with their jounrey.  Also, upon reaching a town checkpoint - a city event will be a multi teired random event with big reward for big risks.
