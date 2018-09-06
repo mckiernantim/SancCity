@@ -43,5 +43,6 @@ A certain number of random events will create a fight!  Battles will increase in
 
 
 ## Coming soon!
-Currently in development are "city events" and "trade caravans".  Trade caravans will allow players to trade money for supplies with random events to help them with their jounrey.  Also, upon reaching a town checkpoint - a city event will be a multi teired random event with big reward for big risks.
+ ![alt text](https://github.com/mckiernantim/SancCity/blob/master/images/tucson_img.png)
+Currently in development are "city events" and "trade caravans".  Trade caravans will allow players to trade money for supplies with random events to help them with their jounrey.  Also, upon reaching a town checkpoint - a city event will be a multi tiered random event with big reward for big risks.
 
